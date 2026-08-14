@@ -6,250 +6,219 @@
 <title>I'm Sorry Noor ❤️</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    min-height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(135deg, #ff416c, #ff4b2b, #7b2ff7, #00c6ff);
-    background-size: 400% 400%;
-    animation: gradient 12s ease infinite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#ff416c,#8338ec,#00c6ff,#ff006e);
+    background-size:400% 400%;
+    animation:bg 10s ease infinite;
 }
 
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+@keyframes bg{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
-/* 3D background text */
-.bg-text {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
+/* 3D BACKGROUND */
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:0;
 }
 
-.bg-text span {
-    position: absolute;
-    font-size: clamp(30px, 7vw, 90px);
-    font-weight: 900;
-    color: rgba(255,255,255,0.10);
-    text-shadow:
-        4px 4px 0 rgba(0,0,0,0.15),
-        8px 8px 15px rgba(0,0,0,0.2);
-    transform: rotate(-20deg);
-    animation: floatText 10s infinite ease-in-out;
-    white-space: nowrap;
+.background div{
+    position:absolute;
+    font-size:60px;
+    font-weight:900;
+    color:rgba(255,255,255,.12);
+    text-shadow:6px 6px 0 rgba(0,0,0,.15),
+                12px 12px 25px rgba(0,0,0,.25);
+    transform:rotate(-15deg);
+    white-space:nowrap;
+    animation:move 8s ease-in-out infinite;
 }
 
-.bg-text span:nth-child(1) { top: 5%; left: -5%; }
-.bg-text span:nth-child(2) { top: 30%; left: 35%; animation-delay: 2s; }
-.bg-text span:nth-child(3) { top: 65%; left: -10%; animation-delay: 4s; }
-.bg-text span:nth-child(4) { top: 85%; left: 45%; animation-delay: 6s; }
+.background div:nth-child(1){top:5%;left:-10%}
+.background div:nth-child(2){top:35%;left:25%;animation-delay:2s}
+.background div:nth-child(3){top:70%;left:-5%;animation-delay:4s}
+.background div:nth-child(4){top:90%;left:40%;animation-delay:6s}
 
-@keyframes floatText {
-    0%,100% { transform: rotate(-20deg) translateY(0); }
-    50% { transform: rotate(-15deg) translateY(-25px); }
+@keyframes move{
+    0%,100%{transform:rotate(-15deg) translateY(0)}
+    50%{transform:rotate(-10deg) translateY(-25px)}
 }
 
-/* Main card */
-.container {
-    position: relative;
-    z-index: 5;
-    width: min(92%, 650px);
-    min-height: 470px;
-    padding: 35px 25px;
-    border-radius: 30px;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.3);
-    box-shadow:
-        0 25px 60px rgba(0,0,0,0.3),
-        inset 0 0 30px rgba(255,255,255,0.1);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+/* CARD */
+.card{
+    position:relative;
+    z-index:5;
+    width:92%;
+    max-width:650px;
+    min-height:500px;
+    padding:30px 22px;
+    border-radius:30px;
+    text-align:center;
+    background:rgba(255,255,255,.16);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.3);
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.step {
-    display: none;
-    animation: enter 0.7s ease;
+.step{
+    display:none;
+    width:100%;
+    animation:show .7s ease;
 }
 
-.step.active {
-    display: block;
+.step.active{
+    display:block;
 }
 
-@keyframes enter {
-    from {
-        opacity: 0;
-        transform: translateY(40px) scale(0.9);
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.9);
     }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
     }
 }
 
-.number {
-    font-size: 18px;
-    opacity: 0.8;
-    letter-spacing: 4px;
-    margin-bottom: 15px;
+.number{
+    font-size:14px;
+    letter-spacing:4px;
+    opacity:.8;
+    margin-bottom:15px;
 }
 
-h1 {
-    font-size: clamp(34px, 8vw, 65px);
-    margin-bottom: 20px;
-    font-weight: 900;
-    text-shadow:
-        3px 3px 0 #7b1fa2,
-        6px 6px 15px rgba(0,0,0,0.4);
+.emoji{
+    font-size:65px;
+    margin-bottom:10px;
+    animation:pulse 1.2s infinite;
 }
 
-.message {
-    font-size: clamp(18px, 4vw, 25px);
-    line-height: 1.6;
-    margin: 20px auto;
-    max-width: 570px;
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.15)}
 }
 
-.heart {
-    font-size: 65px;
-    animation: heartbeat 1.2s infinite;
-    margin-bottom: 10px;
+h1{
+    font-size:clamp(35px,9vw,65px);
+    font-weight:900;
+    margin-bottom:20px;
+    text-shadow:4px 4px 0 #7b1fa2,
+                8px 8px 20px rgba(0,0,0,.4);
 }
 
-@keyframes heartbeat {
-    0%,100% { transform: scale(1); }
-    25% { transform: scale(1.15); }
-    40% { transform: scale(1); }
-    60% { transform: scale(1.12); }
+.message{
+    font-size:clamp(18px,4vw,23px);
+    line-height:1.6;
+    margin:auto;
+    max-width:570px;
 }
 
-/* Button */
-.next-btn {
-    margin-top: 25px;
-    border: none;
-    outline: none;
-    padding: 15px 38px;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-    background: linear-gradient(135deg,#ff006e,#8338ec);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    transition: 0.3s;
+.final{
+    max-height:280px;
+    overflow:auto;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(0,0,0,.18);
+    text-align:left;
+    font-size:18px;
+    line-height:1.7;
 }
 
-.next-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+button{
+    margin-top:25px;
+    padding:15px 35px;
+    border:0;
+    border-radius:50px;
+    color:white;
+    background:linear-gradient(135deg,#ff006e,#8338ec);
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+    transition:.3s;
 }
 
-.next-btn:active {
-    transform: scale(0.95);
+button:hover{
+    transform:scale(1.08);
 }
 
-/* Final message */
-.final-message {
-    font-size: clamp(17px, 4vw, 22px);
-    line-height: 1.7;
-    text-align: left;
-    background: rgba(0,0,0,0.15);
-    padding: 20px;
-    border-radius: 20px;
-    max-height: 280px;
-    overflow-y: auto;
+button:active{
+    transform:scale(.95);
 }
 
-/* Footer */
-.creator {
-    position: fixed;
-    bottom: 12px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    z-index: 20;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+/* FOOTER */
+.footer{
+    position:fixed;
+    bottom:10px;
+    width:100%;
+    text-align:center;
+    z-index:20;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:2px;
 }
 
-/* Prayer emojis */
-.prayer {
-    position: fixed;
-    z-index: 10;
-    font-size: 20px;
-    pointer-events: none;
-    animation: prayerFall linear forwards;
+/* PRAYERS */
+.prayer{
+    position:fixed;
+    top:-40px;
+    z-index:15;
+    pointer-events:none;
+    animation:fall linear forwards;
 }
 
-@keyframes prayerFall {
-    0% {
-        transform: translateY(-50px) rotate(0deg);
-        opacity: 0;
+@keyframes fall{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
     }
-
-    10% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
+    10%{opacity:1}
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
     }
 }
 
-/* Confetti */
-.confetti {
-    position: fixed;
-    width: 8px;
-    height: 8px;
-    top: -10px;
-    z-index: 8;
-    animation: confettiFall 4s linear forwards;
-}
+/* MOBILE */
+@media(max-width:500px){
 
-@keyframes confettiFall {
-    to {
-        transform: translateY(110vh) rotate(720deg);
-        opacity: 0;
-    }
-}
-
-/* Mobile */
-@media(max-width:500px) {
-    .container {
-        min-height: 500px;
-        padding: 25px 18px;
+    .card{
+        min-height:520px;
+        padding:25px 17px;
     }
 
-    .message {
-        font-size: 18px;
+    .final{
+        font-size:16px;
     }
 
-    .final-message {
-        font-size: 16px;
+    .background div{
+        font-size:40px;
     }
 
-    .creator {
-        font-size: 10px;
+    .footer{
+        font-size:9px;
     }
 }
 </style>
@@ -257,227 +226,170 @@ h1 {
 
 <body>
 
-<!-- Background 3D Text -->
-<div class="bg-text">
-    <span>I'M SORRY NOOR ❤️</span>
-    <span>I'M SORRY NOOR 💖</span>
-    <span>I'M SORRY NOOR 🥺</span>
-    <span>I'M SORRY NOOR ❤️</span>
+<!-- BACKGROUND 3D TEXT -->
+<div class="background">
+    <div>I'M SORRY NOOR ❤️</div>
+    <div>I'M SORRY NOOR 💖</div>
+    <div>I'M SORRY NOOR 🥺</div>
+    <div>I'M SORRY NOOR ❤️</div>
 </div>
 
-<!-- Main Website -->
-<div class="container">
+<!-- MAIN CARD -->
+<div class="card">
 
     <!-- STEP 1 -->
-    <div class="step active">
+    <section class="step active">
         <div class="number">STEP 01 / 05</div>
-        <div class="heart">🥺</div>
+        <div class="emoji">🥺</div>
         <h1>I'm Sorry Noor</h1>
+
         <p class="message">
             Gusse mein kabhi kabhi insaan woh baatein bol deta hai
             jo dil se nahi hoti. Mujhe apni baaton ka genuinely afsos hai.
         </p>
-        <button class="next-btn" onclick="nextStep()">Next ❤️</button>
-    </div>
+
+        <button onclick="nextStep()">Next ❤️</button>
+    </section>
+
 
     <!-- STEP 2 -->
-    <div class="step">
+    <section class="step">
         <div class="number">STEP 02 / 05</div>
-        <div class="heart">💔</div>
+        <div class="emoji">💔</div>
         <h1>I'm Really Sorry</h1>
+
         <p class="message">
             Mera intention tumhara dil hurt karna nahi tha.
             Gussa tha, lekin iska matlab yeh nahi ke mujhe
             tumse woh sab kehna chahiye tha.
         </p>
-        <button class="next-btn" onclick="nextStep()">Next 🥺</button>
-    </div>
+
+        <button onclick="nextStep()">Next 🥺</button>
+    </section>
+
 
     <!-- STEP 3 -->
-    <div class="step">
+    <section class="step">
         <div class="number">STEP 03 / 05</div>
-        <div class="heart">🙏</div>
+        <div class="emoji">🙏</div>
         <h1>Please Forgive Me</h1>
+
         <p class="message">
             Jo words gusse mein nikal gaye, unhein main wapas
             nahi la sakta... lekin dil se sorry zaroor keh sakta hoon.
             I hope you understand me.
         </p>
-        <button class="next-btn" onclick="nextStep()">Next ❤️</button>
-    </div>
+
+        <button onclick="nextStep()">Next ❤️</button>
+    </section>
+
 
     <!-- STEP 4 -->
-    <div class="step">
+    <section class="step">
         <div class="number">STEP 04 / 05</div>
-        <div class="heart">😔</div>
+        <div class="emoji">😔</div>
         <h1>One Last Sorry</h1>
+
         <p class="message">
             Ego se zyada important tum ho.
             Aur gusse ke kuch minutes ke liye main apna
             acha relationship kharab nahi karna chahta.
             I'm truly sorry, Noor.
         </p>
-        <button class="next-btn" onclick="nextStep()">Read My Heart ❤️</button>
-    </div>
+
+        <button onclick="nextStep()">Read My Heart ❤️</button>
+    </section>
+
 
     <!-- STEP 5 -->
-    <div class="step">
+    <section class="step">
         <div class="number">STEP 05 / 05</div>
         <h1>I'm Sorry Noor ❤️</h1>
 
-        <div class="final-message">
+        <div class="final">
             Noor I'm really sorry, gusse ma apse bi glti hwe seerat se bi and mj se bi
             <br><br>
+
             So ab ma ne bi bht kuj bol dia ha
             <br><br>
+
             Pr apne bi bola th
             <br><br>
+
             Papers k din ha ma ni chata k ap bi depress rao or ma bi
             <br><br>
+
             So sorry accept krlena agr chao to. ❤️
         </div>
 
-        <button class="next-btn" onclick="showPrayers()">
-            Sorry 🙏🙏
-        </button>
-    </div>
+        <button onclick="sorry()">Sorry 🙏🙏</button>
+    </section>
 
 </div>
 
-<div class="creator">
+<div class="footer">
     Made by Developer Hacker Asad 💻
 </div>
 
+
 <script>
 
-let currentStep = 0;
-const steps = document.querySelectorAll(".step");
+let step = 0;
 
-function nextStep() {
+const allSteps = document.querySelectorAll(".step");
 
-    if (currentStep < steps.length - 1) {
 
-        steps[currentStep].classList.remove("active");
+function nextStep(){
 
-        currentStep++;
+    if(step < allSteps.length - 1){
 
-        steps[currentStep].classList.add("active");
+        allSteps[step].classList.remove("active");
 
-        // Small burst of hearts when changing stage
-        createHearts();
+        step++;
+
+        allSteps[step].classList.add("active");
+
     }
-}
-
-function createHearts() {
-
-    for(let i = 0; i < 8; i++) {
-
-        const heart = document.createElement("div");
-
-        heart.innerHTML = ["❤️","💖","🥺","✨"][Math.floor(Math.random()*4)];
-
-        heart.style.position = "fixed";
-        heart.style.left = Math.random()*100 + "vw";
-        heart.style.top = "50vh";
-        heart.style.fontSize = "20px";
-        heart.style.zIndex = "15";
-        heart.style.pointerEvents = "none";
-
-        document.body.appendChild(heart);
-
-        heart.animate([
-            {
-                transform: "translate(0,0) scale(1)",
-                opacity: 1
-            },
-            {
-                transform:
-                    `translate(${(Math.random()-0.5)*300}px,
-                    ${(Math.random()-0.5)*400}px) scale(0)`,
-                opacity: 0
-            }
-        ], {
-            duration: 1200,
-            easing: "ease-out"
-        });
-
-        setTimeout(() => heart.remove(), 1200);
-    }
-}
-
-/* Lots of 🙏 emojis */
-function showPrayers() {
-
-    // Create 100 prayer emojis
-    for(let i = 0; i < 100; i++) {
-
-        setTimeout(() => {
-
-            const prayer = document.createElement("div");
-
-            prayer.className = "prayer";
-            prayer.innerHTML = "🙏";
-
-            prayer.style.left = Math.random()*100 + "vw";
-
-            prayer.style.fontSize =
-                (12 + Math.random()*18) + "px";
-
-            prayer.style.animationDuration =
-                (3 + Math.random()*5) + "s";
-
-            prayer.style.animationDelay =
-                (Math.random()*2) + "s";
-
-            document.body.appendChild(prayer);
-
-            setTimeout(() => prayer.remove(), 9000);
-
-        }, i * 35);
-    }
-
-    // Confetti
-    createConfetti();
-
-    // Change button
-    document.querySelector(".step.active .next-btn").innerHTML =
-        "Thank You ❤️";
 
 }
 
-/* Colorful confetti */
-function createConfetti() {
 
-    const symbols = ["❤️","💖","✨","🥺","🙏","💕"];
+/* FINAL SORRY BUTTON */
 
-    for(let i = 0; i < 70; i++) {
+function sorry(){
 
-        const confetti = document.createElement("div");
+    for(let i = 0; i < 150; i++){
 
-        confetti.className = "confetti";
+        setTimeout(function(){
 
-        confetti.innerHTML =
-            symbols[Math.floor(Math.random()*symbols.length)];
+            let emoji = document.createElement("div");
 
-        confetti.style.left =
-            Math.random()*100 + "vw";
+            emoji.className = "prayer";
 
-        confetti.style.fontSize =
-            (10 + Math.random()*15) + "px";
+            emoji.innerHTML = "🙏";
 
-        confetti.style.animationDuration =
-            (2 + Math.random()*4) + "s";
+            emoji.style.left =
+                Math.random() * 100 + "vw";
 
-        confetti.style.animationDelay =
-            Math.random()*2 + "s";
+            emoji.style.fontSize =
+                (12 + Math.random() * 18) + "px";
 
-        document.body.appendChild(confetti);
+            emoji.style.animationDuration =
+                (3 + Math.random() * 5) + "s";
 
-        setTimeout(() => confetti.remove(), 7000);
+            document.body.appendChild(emoji);
+
+            setTimeout(function(){
+                emoji.remove();
+            },8000);
+
+        }, i * 30);
+
     }
+
 }
 
 </script>
 
 </body>
-  </html>
+</html>
