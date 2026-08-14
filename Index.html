@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry Noor ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b, #7b2ff7, #00c6ff);
+    background-size: 400% 400%;
+    animation: gradient 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 3D background text */
+.bg-text {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-text span {
+    position: absolute;
+    font-size: clamp(30px, 7vw, 90px);
+    font-weight: 900;
+    color: rgba(255,255,255,0.10);
+    text-shadow:
+        4px 4px 0 rgba(0,0,0,0.15),
+        8px 8px 15px rgba(0,0,0,0.2);
+    transform: rotate(-20deg);
+    animation: floatText 10s infinite ease-in-out;
+    white-space: nowrap;
+}
+
+.bg-text span:nth-child(1) { top: 5%; left: -5%; }
+.bg-text span:nth-child(2) { top: 30%; left: 35%; animation-delay: 2s; }
+.bg-text span:nth-child(3) { top: 65%; left: -10%; animation-delay: 4s; }
+.bg-text span:nth-child(4) { top: 85%; left: 45%; animation-delay: 6s; }
+
+@keyframes floatText {
+    0%,100% { transform: rotate(-20deg) translateY(0); }
+    50% { transform: rotate(-15deg) translateY(-25px); }
+}
+
+/* Main card */
+.container {
+    position: relative;
+    z-index: 5;
+    width: min(92%, 650px);
+    min-height: 470px;
+    padding: 35px 25px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.3),
+        inset 0 0 30px rgba(255,255,255,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.step {
+    display: none;
+    animation: enter 0.7s ease;
+}
+
+.step.active {
+    display: block;
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.number {
+    font-size: 18px;
+    opacity: 0.8;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: clamp(34px, 8vw, 65px);
+    margin-bottom: 20px;
+    font-weight: 900;
+    text-shadow:
+        3px 3px 0 #7b1fa2,
+        6px 6px 15px rgba(0,0,0,0.4);
+}
+
+.message {
+    font-size: clamp(18px, 4vw, 25px);
+    line-height: 1.6;
+    margin: 20px auto;
+    max-width: 570px;
+}
+
+.heart {
+    font-size: 65px;
+    animation: heartbeat 1.2s infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    25% { transform: scale(1.15); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.12); }
+}
+
+/* Button */
+.next-btn {
+    margin-top: 25px;
+    border: none;
+    outline: none;
+    padding: 15px 38px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(135deg,#ff006e,#8338ec);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.next-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.next-btn:active {
+    transform: scale(0.95);
+}
+
+/* Final message */
+.final-message {
+    font-size: clamp(17px, 4vw, 22px);
+    line-height: 1.7;
+    text-align: left;
+    background: rgba(0,0,0,0.15);
+    padding: 20px;
+    border-radius: 20px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+/* Footer */
+.creator {
+    position: fixed;
+    bottom: 12px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    z-index: 20;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* Prayer emojis */
+.prayer {
+    position: fixed;
+    z-index: 10;
+    font-size: 20px;
+    pointer-events: none;
+    animation: prayerFall linear forwards;
+}
+
+@keyframes prayerFall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    top: -10px;
+    z-index: 8;
+    animation: confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile */
+@media(max-width:500px) {
+    .container {
+        min-height: 500px;
+        padding: 25px 18px;
+    }
+
+    .message {
+        font-size: 18px;
+    }
+
+    .final-message {
+        font-size: 16px;
+    }
+
+    .creator {
+        font-size: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background 3D Text -->
+<div class="bg-text">
+    <span>I'M SORRY NOOR ❤️</span>
+    <span>I'M SORRY NOOR 💖</span>
+    <span>I'M SORRY NOOR 🥺</span>
+    <span>I'M SORRY NOOR ❤️</span>
+</div>
+
+<!-- Main Website -->
+<div class="container">
+
+    <!-- STEP 1 -->
+    <div class="step active">
+        <div class="number">STEP 01 / 05</div>
+        <div class="heart">🥺</div>
+        <h1>I'm Sorry Noor</h1>
+        <p class="message">
+            Gusse mein kabhi kabhi insaan woh baatein bol deta hai
+            jo dil se nahi hoti. Mujhe apni baaton ka genuinely afsos hai.
+        </p>
+        <button class="next-btn" onclick="nextStep()">Next ❤️</button>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+        <div class="number">STEP 02 / 05</div>
+        <div class="heart">💔</div>
+        <h1>I'm Really Sorry</h1>
+        <p class="message">
+            Mera intention tumhara dil hurt karna nahi tha.
+            Gussa tha, lekin iska matlab yeh nahi ke mujhe
+            tumse woh sab kehna chahiye tha.
+        </p>
+        <button class="next-btn" onclick="nextStep()">Next 🥺</button>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+        <div class="number">STEP 03 / 05</div>
+        <div class="heart">🙏</div>
+        <h1>Please Forgive Me</h1>
+        <p class="message">
+            Jo words gusse mein nikal gaye, unhein main wapas
+            nahi la sakta... lekin dil se sorry zaroor keh sakta hoon.
+            I hope you understand me.
+        </p>
+        <button class="next-btn" onclick="nextStep()">Next ❤️</button>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step">
+        <div class="number">STEP 04 / 05</div>
+        <div class="heart">😔</div>
+        <h1>One Last Sorry</h1>
+        <p class="message">
+            Ego se zyada important tum ho.
+            Aur gusse ke kuch minutes ke liye main apna
+            acha relationship kharab nahi karna chahta.
+            I'm truly sorry, Noor.
+        </p>
+        <button class="next-btn" onclick="nextStep()">Read My Heart ❤️</button>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step">
+        <div class="number">STEP 05 / 05</div>
+        <h1>I'm Sorry Noor ❤️</h1>
+
+        <div class="final-message">
+            Noor I'm really sorry, gusse ma apse bi glti hwe seerat se bi and mj se bi
+            <br><br>
+            So ab ma ne bi bht kuj bol dia ha
+            <br><br>
+            Pr apne bi bola th
+            <br><br>
+            Papers k din ha ma ni chata k ap bi depress rao or ma bi
+            <br><br>
+            So sorry accept krlena agr chao to. ❤️
+        </div>
+
+        <button class="next-btn" onclick="showPrayers()">
+            Sorry 🙏🙏
+        </button>
+    </div>
+
+</div>
+
+<div class="creator">
+    Made by Developer Hacker Asad 💻
+</div>
+
+<script>
+
+let currentStep = 0;
+const steps = document.querySelectorAll(".step");
+
+function nextStep() {
+
+    if (currentStep < steps.length - 1) {
+
+        steps[currentStep].classList.remove("active");
+
+        currentStep++;
+
+        steps[currentStep].classList.add("active");
+
+        // Small burst of hearts when changing stage
+        createHearts();
+    }
+}
+
+function createHearts() {
+
+    for(let i = 0; i < 8; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.innerHTML = ["❤️","💖","🥺","✨"][Math.floor(Math.random()*4)];
+
+        heart.style.position = "fixed";
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.top = "50vh";
+        heart.style.fontSize = "20px";
+        heart.style.zIndex = "15";
+        heart.style.pointerEvents = "none";
+
+        document.body.appendChild(heart);
+
+        heart.animate([
+            {
+                transform: "translate(0,0) scale(1)",
+                opacity: 1
+            },
+            {
+                transform:
+                    `translate(${(Math.random()-0.5)*300}px,
+                    ${(Math.random()-0.5)*400}px) scale(0)`,
+                opacity: 0
+            }
+        ], {
+            duration: 1200,
+            easing: "ease-out"
+        });
+
+        setTimeout(() => heart.remove(), 1200);
+    }
+}
+
+/* Lots of 🙏 emojis */
+function showPrayers() {
+
+    // Create 100 prayer emojis
+    for(let i = 0; i < 100; i++) {
+
+        setTimeout(() => {
+
+            const prayer = document.createElement("div");
+
+            prayer.className = "prayer";
+            prayer.innerHTML = "🙏";
+
+            prayer.style.left = Math.random()*100 + "vw";
+
+            prayer.style.fontSize =
+                (12 + Math.random()*18) + "px";
+
+            prayer.style.animationDuration =
+                (3 + Math.random()*5) + "s";
+
+            prayer.style.animationDelay =
+                (Math.random()*2) + "s";
+
+            document.body.appendChild(prayer);
+
+            setTimeout(() => prayer.remove(), 9000);
+
+        }, i * 35);
+    }
+
+    // Confetti
+    createConfetti();
+
+    // Change button
+    document.querySelector(".step.active .next-btn").innerHTML =
+        "Thank You ❤️";
+
+}
+
+/* Colorful confetti */
+function createConfetti() {
+
+    const symbols = ["❤️","💖","✨","🥺","🙏","💕"];
+
+    for(let i = 0; i < 70; i++) {
+
+        const confetti = document.createElement("div");
+
+        confetti.className = "confetti";
+
+        confetti.innerHTML =
+            symbols[Math.floor(Math.random()*symbols.length)];
+
+        confetti.style.left =
+            Math.random()*100 + "vw";
+
+        confetti.style.fontSize =
+            (10 + Math.random()*15) + "px";
+
+        confetti.style.animationDuration =
+            (2 + Math.random()*4) + "s";
+
+        confetti.style.animationDelay =
+            Math.random()*2 + "s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 7000);
+    }
+}
+
+</script>
+
+</body>
+  </html>
